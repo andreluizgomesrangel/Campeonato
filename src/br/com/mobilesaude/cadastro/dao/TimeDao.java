@@ -9,6 +9,7 @@ import java.util.List;
 import br.com.mobilesaude.connection.cadastro.ConnectionFactory;
 import br.com.mobilesaude.source.Time;
 
+//classe qeu acessa o banco de dados de times
 public class TimeDao {
 
 	// a conexão com o banco de dados
