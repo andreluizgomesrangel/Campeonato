@@ -93,7 +93,7 @@ public class PartidaService {
 	@GET
 	@Path("/insere")
 	@Produces( MediaType.APPLICATION_XML)
-	public List<Partida> insere_queryParam(  @QueryParam("id")      int id , 
+	public List<Partida> insere_queryParam( 
 	 		 								 @QueryParam("idTimeA") int idTimeA ,
 									 		 @QueryParam("idTimeB") int idTimeB ,
 									 		 @QueryParam("placarA") int placarA ,
@@ -115,6 +115,10 @@ public class PartidaService {
 			}
 		}
 		
+		PartidaDao dao = new PartidaDao();
+		List<Partida> lista = dao.getLista(times);
+		long id = lista.get( lista.size() - 1 ).getId() + 1;
+		
 		Partida p = new Partida();
 		p.setId(id);
 		p.setAcabou(acabou);
@@ -123,10 +127,9 @@ public class PartidaService {
 		p.setTimeA(tA);
 		p.setTimeB(tB);
 	
-		PartidaDao dao = new PartidaDao();
 		dao.adiciona(p);
 		
-		List<Partida> lista = dao.getLista(times);
+		lista = dao.getLista(times);
 		return lista;
 	}
 }

@@ -69,7 +69,7 @@ public class TimeService {
 	@GET
 	@Path("/inserir")
 	@Produces( MediaType.APPLICATION_XML)
-	public List<Time> inserir_queryParam(   @QueryParam("id") int id , 
+	public List<Time> inserir_queryParam(   
 									 		@QueryParam("nome") String nome ,
 									 		@QueryParam("pontos") int pontos , 
 									 		@QueryParam("jogos") int jogos ,
@@ -81,12 +81,18 @@ public class TimeService {
 									 		@QueryParam("gs") int gs ,
 									 		@QueryParam("rendimento") double rendimento ,
 									 		@QueryParam("jogador") String jogador ){
+		
+		TimeDao dao = new TimeDao();
+		List<Time> lista = dao.getLista();
+		long id = lista.get( lista.size() - 1 ).getId()+1;
+		
 		Time t = new Time(id, nome, pontos, jogos, vitorias, empates, derrotas, gp, gc, gs);
 		t.setRendimento(rendimento(jogos,pontos));
 		t.setJogador(jogador);
-		TimeDao dao = new TimeDao();
+		
 		dao.adiciona(t);
-		List<Time> lista = dao.getLista();
+		
+		lista = dao.getLista();
 		return lista;
 	}
 	
