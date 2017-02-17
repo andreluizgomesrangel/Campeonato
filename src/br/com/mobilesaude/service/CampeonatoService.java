@@ -11,6 +11,7 @@ import javax.ws.rs.core.MediaType;
 import br.com.mobilesaude.cadastro.dao.PartidaDao;
 import br.com.mobilesaude.cadastro.dao.TimeDao;
 import br.com.mobilesaude.source.Campeonato;
+import br.com.mobilesaude.source.Partida;
 import br.com.mobilesaude.source.Time;
 
 
@@ -55,18 +56,18 @@ public class CampeonatoService {
 		Campeonato c = new Campeonato();
 		List<Time> times = tdao.getLista();
 		c.setTimes(times);
-		
-		if(times.size()!=0){
-			c.setPartidas(pdao.getLista(c.getTimes()));
-		}
-		
-		if(c.getPartidas().isEmpty()){
-			c.rodada(rodadas);
-		}
 		c.setIniciou(true);
-		if( c.getPartidas().get( c.getPartidas().size() - 1 ).isAcabou()==true ){
-			c.setFim(true);
+		
+		for(Time t : c.getTimes()){
+			System.out.println(t.getNome());
 		}
+		
+		if(times.size()==0){
+			return new Campeonato();
+			//c.setPartidas(pdao.getLista(c.getTimes()));
+		}
+		c.rodada(rodadas);
+		
 		return c;
 	}
 	
