@@ -38,15 +38,7 @@ public class TimeDao {
 		         stmt.setInt(8,time.getGp());
 		         stmt.setInt(9,time.getGc());
 		         stmt.setInt(10,time.getGs());
-		         double rendimento;
-		         if(time.getJogos()==0) rendimento=0;
-		         else{
-		        	 rendimento = time.getJogos()*3.0;
-				     rendimento = 1.0*time.getPontos()/rendimento;
-				     rendimento = rendimento*100.0;
-		         }
-		         stmt.setDouble(11,rendimento);
-		         time.setRendimento(rendimento);
+		         stmt.setDouble(11,time.getRendimento());
 		         stmt.setString(12,time.getJogador());
 		         
 		         // executa
@@ -79,7 +71,7 @@ public class TimeDao {
 		             time.setGp(rs.getInt("gp"));
 		             time.setGc(rs.getInt("gc"));
 		             time.setGs(rs.getInt("gs"));
-		             time.setRendimento(rs.getDouble("pontos"));
+		             time.setRendimento(rs.getDouble("rendimento"));
 		             time.setJogador(rs.getString("jogador"));
 		             
 		             // montando a data através do Calendar
@@ -112,18 +104,9 @@ public class TimeDao {
 		         stmt.setInt(7, time.getGp());
 		         stmt.setInt(8, time.getGc());
 		         stmt.setInt(9, time.getGs());
-		         double rendimento;
-		         if(time.getJogos()==0) rendimento=0;
-		         else{
-		        	 rendimento = time.getJogos()*3.0;
-				     rendimento = 1.0*time.getPontos()/rendimento;
-				     rendimento = rendimento*100.0;
-		         }
-		         stmt.setDouble(10, rendimento);
+		         stmt.setDouble(10, time.getRendimento());
 		         stmt.setString(11, time.getJogador());
 		         stmt.setLong(12, time.getId());
-		         
-		         
 		         stmt.execute();
 		         stmt.close();
 		     } catch (SQLException e) {

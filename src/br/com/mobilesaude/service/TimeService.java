@@ -52,13 +52,11 @@ public class TimeService {
 									 		@QueryParam("gp") int gp ,
 									 		@QueryParam("gc") int gc ,
 									 		@QueryParam("gs") int gs ,
-									 		@QueryParam("rendimento") double rendimento ,
 									 		@QueryParam("jogador") String jogador ){
 		Time t = new Time(id, nome, pontos, jogos, vitorias, empates, derrotas, gp, gc, gs);
-		t.setRendimento(rendimento);
+		t.setRendimento(rendimento(jogos,pontos));
 		t.setJogador(jogador);
 		TimeDao dao = new TimeDao();
-		t.atualizarRendimento();
 		dao.altera(t);
 		List<Time> lista = dao.getLista();
 		return lista;
@@ -84,15 +82,18 @@ public class TimeService {
 									 		@QueryParam("rendimento") double rendimento ,
 									 		@QueryParam("jogador") String jogador ){
 		Time t = new Time(id, nome, pontos, jogos, vitorias, empates, derrotas, gp, gc, gs);
-		t.setRendimento(rendimento);
+		t.setRendimento(rendimento(jogos,pontos));
 		t.setJogador(jogador);
 		TimeDao dao = new TimeDao();
-		t.atualizarRendimento();
 		dao.adiciona(t);
 		List<Time> lista = dao.getLista();
 		return lista;
 	}
 	
+	double rendimento(int j, int pontos){
+		if(j==0) return 0.0;
+		return (pontos*100.0)/(3.0*j);
+	}
 	
 }
 
