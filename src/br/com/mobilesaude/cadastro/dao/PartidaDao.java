@@ -117,6 +117,18 @@ public class PartidaDao {
 		     }
 		 }
 	   
+	   public void truncate() {
+		     String sql = "TRUNCATE TABLE cadastro.partida";
+		             
+		     try {
+		         PreparedStatement stmt = connection.prepareStatement(sql);
+		         stmt.execute();
+		         stmt.close();
+		     } catch (SQLException e) {
+		         throw new RuntimeException(e);
+		     }
+		 }
+	   
 	   public Time buscaTime(long id, List<Time> times){
 			for(Time t : times){
 				if(t.getId()==id){

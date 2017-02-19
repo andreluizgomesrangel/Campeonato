@@ -113,5 +113,15 @@ public class TimeDao {
 		         throw new RuntimeException(e);
 		     }
 		 }
-	   
+	   public void truncate() {
+		     String sql = "TRUNCATE TABLE cadastro.time";
+		             
+		     try {
+		         PreparedStatement stmt = connection.prepareStatement(sql);
+		         stmt.execute();
+		         stmt.close();
+		     } catch (SQLException e) {
+		         throw new RuntimeException(e);
+		     }
+		 }
 }

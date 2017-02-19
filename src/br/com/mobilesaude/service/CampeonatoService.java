@@ -55,4 +55,18 @@ public class CampeonatoService {
 		c.iniciar(rodadas);
 	return c;
 	}
+	
+	@GET
+	@Path("/xxx")
+	@Produces( MediaType.APPLICATION_XML)
+	public void reset( ){
+		
+		TimeDao tdao = new TimeDao();
+		PartidaDao pdao = new PartidaDao();
+		
+		tdao.truncate();
+		pdao.truncate();
+		
+	}
+	
 }

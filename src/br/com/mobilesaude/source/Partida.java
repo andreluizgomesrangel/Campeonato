@@ -1,5 +1,8 @@
 package br.com.mobilesaude.source;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -20,6 +23,12 @@ public class Partida {
 	private long hash;
 	boolean acabou;
 	
+	List<Artilheiro> artilheiros;
+	
+	public Partida(){
+		artilheiros = new ArrayList<Artilheiro>();
+	}
+	
 	public long getId() {
 		return id;
 	}
@@ -36,9 +45,7 @@ public class Partida {
 		this.acabou = acabou;
 	}
 
-	public Partida(){
-		
-	}
+	
 	
 	public Partida(Time timeA, Time timeB){
 		this.timeA=timeA;
