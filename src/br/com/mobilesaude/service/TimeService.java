@@ -105,5 +105,69 @@ public class TimeService {
 		return (pontos*100.0)/(3.0*j);
 	}
 	
+	@GET
+	@Path("/fazerGol")
+	@Produces( MediaType.APPLICATION_XML)
+	public List<Time> fazerGol( @QueryParam("id") int id ){
+		TimeDao dao = new TimeDao();
+		List<Time> lista = dao.getLista();
+		
+		Time t = lista.get(id-1);
+		t.fazerGol();
+		dao.altera(t);
+		return lista;
+	}
+	
+	@GET
+	@Path("/levarGol")
+	@Produces( MediaType.APPLICATION_XML)
+	public List<Time> levarGol( @QueryParam("id") int id ){
+		TimeDao dao = new TimeDao();
+		List<Time> lista = dao.getLista();
+		
+		Time t = lista.get(id-1);
+		t.levarGol();
+		dao.altera(t);
+		return lista;
+	}
+	
+	@GET
+	@Path("/vencer")
+	@Produces( MediaType.APPLICATION_XML)
+	public List<Time> vencer( @QueryParam("id") int id ){
+		TimeDao dao = new TimeDao();
+		List<Time> lista = dao.getLista();
+		
+		Time t = lista.get(id-1);
+		t.vencer();
+		dao.altera(t);
+		return lista;
+	}
+	
+	@GET
+	@Path("/empatar")
+	@Produces( MediaType.APPLICATION_XML)
+	public List<Time> empatar( @QueryParam("id") int id ){
+		TimeDao dao = new TimeDao();
+		List<Time> lista = dao.getLista();
+		
+		Time t = lista.get(id-1);
+		t.empatar();
+		dao.altera(t);
+		return lista;
+	}
+	
+	@GET
+	@Path("/perder")
+	@Produces( MediaType.APPLICATION_XML)
+	public List<Time> perder( @QueryParam("id") int id ){
+		TimeDao dao = new TimeDao();
+		List<Time> lista = dao.getLista();
+		
+		Time t = lista.get(id-1);
+		t.perder();
+		dao.altera(t);
+		return lista;
+	}
 }
 

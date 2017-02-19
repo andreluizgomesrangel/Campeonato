@@ -1,4 +1,5 @@
 package br.com.mobilesaude.service;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -136,4 +137,22 @@ public class PartidaService {
 		lista = dao.getLista(times);
 		return lista;
 	}
+	
+	@GET
+	@Path("/finalizar")
+	@Produces( MediaType.APPLICATION_XML)
+	public List<Partida> finalizar(  @QueryParam("id") int id  ){
+		TimeDao dao2 = new TimeDao();
+		List<Time> times = new ArrayList<Time>();
+		times = dao2.getLista();
+		PartidaDao dao = new PartidaDao();
+		List<Partida> lista = dao.getLista(times);
+		
+		Partida p = lista.get(id-1);
+		p.finalizarPartida();
+		dao.altera(p);
+	
+		return lista;
+	}
+	
 }
