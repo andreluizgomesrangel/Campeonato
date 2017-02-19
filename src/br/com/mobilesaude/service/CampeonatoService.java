@@ -50,25 +50,9 @@ public class CampeonatoService {
 	@Path("/iniciar")
 	@Produces( MediaType.APPLICATION_XML)
 	public Campeonato iniciar(  @QueryParam("rodadas") int rodadas  ){
-		TimeDao tdao = new TimeDao();
-		PartidaDao pdao = new PartidaDao();
 		
 		Campeonato c = new Campeonato();
-		List<Time> times = tdao.getLista();
-		c.setTimes(times);
-		c.setIniciou(true);
-		
-		for(Time t : c.getTimes()){
-			System.out.println(t.getNome());
-		}
-		
-		if(times.size()==0){
-			return new Campeonato();
-			//c.setPartidas(pdao.getLista(c.getTimes()));
-		}
-		c.rodada(rodadas);
-		
-		return c;
+		c.iniciar(rodadas);
+	return c;
 	}
-	
 }

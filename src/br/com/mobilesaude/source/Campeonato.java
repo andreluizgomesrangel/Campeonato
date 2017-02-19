@@ -63,11 +63,11 @@ public class Campeonato {
 	}
 
 	public void pegarTimes(){
-		novoTime("barce", "marcos");
+		/*novoTime("barce", "marcos");
 		novoTime("mcity", "andre");
 		novoTime("bayer", "jhnoy");
-		novoTime("realm", "fernando");
-
+		novoTime("realm", "fernando");*/
+		this.times = DBgetTimes();
 	}
 	
 	public void DBcarregar(){
@@ -177,9 +177,8 @@ public class Campeonato {
 			t2 = times.get(i);
 			
 			Partida busca = buscaPartida( t1.getId() , t2.getId() , partidas );
-			
+			System.out.println(times.size());
 			while( busca!=null && i < times.size() ){
-				
 				i++;
 				t2 = times.get(i);
 				busca = buscaPartida( t1.getId() , t2.getId() , partidas );
@@ -197,6 +196,7 @@ public class Campeonato {
 				nova.setTimeB(t2);
 				dao.adiciona(nova);
 				partidas.add(nova);
+				nova.mostrarConfronto();
 				idPartida++;
 				times.sort(null);
 			}
