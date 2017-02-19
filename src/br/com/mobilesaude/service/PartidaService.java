@@ -117,7 +117,11 @@ public class PartidaService {
 		
 		PartidaDao dao = new PartidaDao();
 		List<Partida> lista = dao.getLista(times);
-		long id = lista.get( lista.size() - 1 ).getId() + 1;
+		long id;
+		if(lista.size()==0) id=0;
+		else {
+			id = lista.get( lista.size() - 1 ).getId() + 1;
+		}
 		
 		Partida p = new Partida();
 		p.setId(id);

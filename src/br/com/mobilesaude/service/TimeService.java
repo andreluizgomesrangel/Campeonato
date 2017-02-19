@@ -84,7 +84,11 @@ public class TimeService {
 		
 		TimeDao dao = new TimeDao();
 		List<Time> lista = dao.getLista();
-		long id = lista.get( lista.size() - 1 ).getId()+1;
+		long id;
+		if(lista.size()==0) id=0;
+		else {
+			id = lista.get( lista.size() - 1 ).getId()+1;
+		}
 		
 		Time t = new Time(id, nome, pontos, jogos, vitorias, empates, derrotas, gp, gc, gs);
 		t.setRendimento(rendimento(jogos,pontos));
