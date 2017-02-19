@@ -85,7 +85,7 @@ public class TimeService {
 		TimeDao dao = new TimeDao();
 		List<Time> lista = dao.getLista();
 		long id;
-		if(lista.size()==0) id=0;
+		if(lista.size()==0) id=1;
 		else {
 			id = lista.get( lista.size() - 1 ).getId()+1;
 		}
