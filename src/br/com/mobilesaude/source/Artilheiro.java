@@ -15,6 +15,7 @@ public class Artilheiro {
 	long id;
 	List<Partida> partidas;
 	int gols;
+	long idTime;
 	Time time;
 	String nome;
 	
@@ -51,6 +52,14 @@ public class Artilheiro {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public long getIdTime() {
+		return idTime;
+	}
+
+	public void setIdTime(long idTime) {
+		this.idTime = idTime;
 	}
 	
 	

@@ -8,6 +8,8 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import br.com.mobilesaude.cadastro.dao.GolDao;
+
 @XmlRootElement(name="time")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Time implements Comparable<Time>{
@@ -28,6 +30,8 @@ public class Time implements Comparable<Time>{
 	List<Partida> partidas = new ArrayList<Partida>();
 	
 	String jogador;
+	List<Artilheiro> artilheiros = new ArrayList<Artilheiro>();
+	List<Gol> gols = new ArrayList<Gol>();
 	
 	public Time(){
 		this.jogos=0;
@@ -211,9 +215,35 @@ public class Time implements Comparable<Time>{
 		return 0;
 	}
 	
+	//bucar artilhiero por nome
+	public Artilheiro buscar( String nome ){
+		for(Artilheiro a : artilheiros ){
+			if( nome.equals(nome) ){
+				return a;
+			}
+		}
+		return null;
+	}
+	
 	public void mostrarPartidasJogadas(){
 		for(Partida p : partidas){
 			p.mostrar();
 		}
+	}
+
+	public List<Artilheiro> getArtilheiros() {
+		return artilheiros;
+	}
+
+	public void setArtilheiros(List<Artilheiro> artilheiros) {
+		this.artilheiros = artilheiros;
+	}
+
+	public List<Gol> getGols() {
+		return gols;
+	}
+
+	public void setGols(List<Gol> gols) {
+		this.gols = gols;
 	}
 }

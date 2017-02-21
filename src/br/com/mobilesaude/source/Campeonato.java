@@ -36,11 +36,16 @@ public class Campeonato {
 	Partida partidaAtual;
 	long idPartida;
 	
+	List<Gol> gols;
+	List<Artilheiro> artilheiros;
+	
 
 	public Campeonato(){
 		this.idTime=1;
 		this.times=new ArrayList<Time>();
 		this.tabela = new Tabela(times);
+		this.gols = new ArrayList<Gol>();
+		this.artilheiros = new ArrayList<Artilheiro>();
 		partidas = new ArrayList<Partida>();
 		idPartida = 0;
 	}

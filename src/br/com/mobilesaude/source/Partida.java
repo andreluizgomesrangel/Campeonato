@@ -24,6 +24,7 @@ public class Partida {
 	boolean acabou;
 	
 	List<Artilheiro> artilheiros;
+	List<Gol> gols = new ArrayList<Gol>();
 	
 	public Partida(){
 		artilheiros = new ArrayList<Artilheiro>();
@@ -86,8 +87,8 @@ public class Partida {
 	}
 	
 	public void golA(){
-		this.timeA.fazerGol();
 		this.placarA++;
+		this.timeA.fazerGol();
 		this.timeB.levarGol();
 		//mostrar();
 	}
