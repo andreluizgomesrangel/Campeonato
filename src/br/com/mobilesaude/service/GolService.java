@@ -3,7 +3,9 @@ package br.com.mobilesaude.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
@@ -47,7 +49,27 @@ public class GolService {
 		gol.setNomeArtilheiro(nome);
 		gol.setIdTime(idTime);
 		gol.setIdPartida(idPartida);
+		System.out.println("gooooool");
+		dao.adiciona(gol);
 		
+		gols = dao.getLista();
+		 return gols;
+	}
+	
+	@POST
+	@Path("/inserir2")
+	@Produces( MediaType.APPLICATION_XML)
+	public List<Gol> inserir2( @FormParam("artilheiro") String nome,
+							   @FormParam("idTime") long idTime,
+							   @FormParam("idPartida") long idPartida ){
+		List<Gol> gols = new ArrayList<Gol>();
+		GolDao dao = new GolDao();
+		
+		Gol gol = new Gol();
+		gol.setNomeArtilheiro(nome);
+		gol.setIdTime(idTime);
+		gol.setIdPartida(idPartida);
+		System.out.println("gooooool");
 		dao.adiciona(gol);
 		
 		gols = dao.getLista();

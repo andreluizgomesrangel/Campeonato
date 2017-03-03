@@ -65,8 +65,8 @@ public class GolDao {
 		             Gol gol = new Gol();
 		             gol.setId(rs.getLong("id"));
 		             gol.setNomeArtilheiro(rs.getString("nomeArtilheiro"));
-		             gol.setIdTime(rs.getLong("id"));
-		             gol.setIdPartida(rs.getLong("id"));
+		             gol.setIdTime(rs.getLong("idTime"));
+		             gol.setIdPartida(rs.getLong("idPartida"));
 		             
 		             // montando a data através do Calendar
 		             /*Calendar data = Calendar.getInstance();
